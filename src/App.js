@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
+import {useEffect, useState} from "react";
+import TourCard from "./TourCard";
+import {getOrderedTours, getTours} from "./api/api";
+import Main from "./pages/Main";
+import Header from "./pages/Header";
+import {UserContext, UserProvider} from "./UserContext";
+import Auth from "./pages/Auth";
 
 function App() {
+    const [isAuthModalOpen,setIsAuthModalOpen] = useState(false);
+    const openAuthModal = () => setIsAuthModalOpen(true);
+    const closeAuthModal = () =>setIsAuthModalOpen(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <UserProvider>
+          <BrowserRouter>
+              <Header/>
+              <Auth isOpen={isAuthModalOpen} open={openAuthModal}/>
+              <Routes>
+                <Route path='/' Component={Main}/>
+              </Routes>
+          </BrowserRouter>
+      </UserProvider>
   );
 }
 
