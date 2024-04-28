@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {Link, Navigate} from "react-router-dom";
 
 function TourCard({tour}) {
     const [routes,setRoutes] = useState([]);
@@ -7,8 +8,9 @@ function TourCard({tour}) {
             .then((res)=>res.json())
             .then((data)=>setRoutes(data));
     }, []);
+
     return (
-        <li className=" flex gap-4 bg-green-300 p-2 rounded" key={tour.tour_id}>
+        <li className={`flex gap-4 bg-green-300 p-2 rounded`} key={tour.tour_id}>
             <h1 className="font-bold">Тур №{tour.tour_id}</h1>
             <div>
                 <h2><i>Маршрут тура:</i></h2>
@@ -25,7 +27,7 @@ function TourCard({tour}) {
 
             </div>
             <div className="items-end justify-end grow flex">
-                <button className=" h-fit bg-green-500 p-2 rounded">Заказать тур</button>
+                <Link className=" h-fit bg-green-500 p-2 rounded" to={`/tour-order/${tour.tour_id}`}>Заказать тур</Link>
             </div>
         </li>
     )

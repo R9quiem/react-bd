@@ -6,6 +6,7 @@ import Main from "./pages/Main";
 import Header from "./pages/Header";
 import {UserContext, UserProvider} from "./UserContext";
 import Auth from "./pages/Auth";
+import TourOrder from "./pages/TourOrder";
 
 function App() {
     const [isAuthModalOpen,setIsAuthModalOpen] = useState(false);
@@ -18,6 +19,7 @@ function App() {
               <Auth isOpen={isAuthModalOpen} close={closeAuthModal}/>
               <Routes>
                 <Route path='/' Component={Main}/>
+                <Route path='/tour-order/:tour_id' Component={TourOrder}/>
               </Routes>
           </BrowserRouter>
       </UserProvider>
