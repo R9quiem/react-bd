@@ -14,8 +14,8 @@ function App() {
   return (
       <UserProvider>
           <BrowserRouter>
-              <Header/>
-              <Auth isOpen={isAuthModalOpen} open={openAuthModal}/>
+              <Header openAuthModal={openAuthModal}/>
+              <Auth isOpen={isAuthModalOpen} close={closeAuthModal}/>
               <Routes>
                 <Route path='/' Component={Main}/>
               </Routes>
