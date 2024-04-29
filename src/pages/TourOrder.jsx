@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import {useUser} from "../UserContext";
-import {useParams} from "react-router-dom";
+import {Navigate, useNavigate, useParams} from "react-router-dom";
 
-function removeW(weekString) {
-  return weekString.replace("W", "");
-}
 
 function TourOrderForm() {
   const [formData, setFormData] = useState({
@@ -13,6 +10,8 @@ function TourOrderForm() {
   });
   const {user} = useUser();
   const { tour_id } = useParams();
+
+  const navigate = useNavigate();
   const orderTour = () => {
     fetch('http://localhost:8080/ordered-tours', {
       method: 'POST',
@@ -26,16 +25,6 @@ function TourOrderForm() {
         number_of_people: formData.number_of_people
       }) // Предположим, что вам нужно передать идентификатор тура
     })
-      .then((res) => res.json())
-      .then((data) => {
-        // Обработка успешного ответа
-        console.log('Заказ тура выполнен:', data);
-        // Здесь можно выполнить какие-то действия, например, обновить состояние компонента
-      })
-      .catch((error) => {
-        // Обработка ошибки
-        console.error('Ошибка при заказе тура:', error);
-      });
   };
   const handleNumberOfPeopleChange = (e) => {
     setFormData({
@@ -54,6 +43,7 @@ function TourOrderForm() {
     e.preventDefault();
     // Вызываем функцию orderTour, передавая количество человек из состояния и идентификатор тура
     orderTour();
+    navigate('/');
   };
 
   return (

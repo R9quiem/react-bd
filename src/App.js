@@ -7,6 +7,8 @@ import Header from "./pages/Header";
 import {UserContext, UserProvider} from "./UserContext";
 import Auth from "./pages/Auth";
 import TourOrder from "./pages/TourOrder";
+import Flights from "./pages/Flights";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
     const [isAuthModalOpen,setIsAuthModalOpen] = useState(false);
@@ -20,6 +22,8 @@ function App() {
               <Routes>
                 <Route path='/' Component={Main}/>
                 <Route path='/tour-order/:tour_id' Component={TourOrder}/>
+                <Route path='/flights' Component={Flights}/>
+                <Route path='/dashboard' Component={Dashboard}/>
               </Routes>
           </BrowserRouter>
       </UserProvider>
