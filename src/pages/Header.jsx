@@ -4,7 +4,7 @@ import {useUser} from "../UserContext";
 export default function Header({openAuthModal}){
   const {user,logout} = useUser();
     return (
-        <header className="bg-black  h-20 ">
+        <header className="bg-black h-20 ">
             <nav className="flex relative gap-5 mx-auto w-4/5 *:py-7 *:rounded-tl-xl *:rounded-tr-xl *:font-bold *:h-full  *:p-2">
                 <NavLink exact to='/'  className={({ isActive}) => isActive ? "bg-white" : "text-white"}>Туры</NavLink>
                 <NavLink to='/flights' className={({ isActive}) => isActive ? "bg-white" : "text-white"}>Полеты</NavLink>
