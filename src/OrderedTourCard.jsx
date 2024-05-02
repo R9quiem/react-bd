@@ -21,7 +21,11 @@ function OrderedTourCard({tour}) {
   }
   return (
     <li className={`flex gap-4 bg-purple-300 p-2 rounded`} key={tour.ordered_tour_id}>
-      <h1 className="font-bold">ID тура: {tour.ordered_tour_id}</h1>
+      <div className="mr-6">
+        <h1 className="font-bold">ID тура: {tour.ordered_tour_id}</h1>
+        <p>Кол-во человек: <b>{tour.number_of_people}</b></p>
+        <p>Дата заказа: <b>{tour.booking_date}</b></p>
+      </div>
       <div>
         <h2><i>Маршрут тура:</i></h2>
         <ol>
