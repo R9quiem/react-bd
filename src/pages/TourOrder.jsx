@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import {useUser} from "../UserContext";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 
-
+const formatDate = (date) => {
+  const newDate =date.slice(0,5) + date.slice(6);
+  console.log(newDate)
+  return newDate;
+}
 function TourOrderForm() {
   const [formData, setFormData] = useState({
     start_week: '',
@@ -13,6 +17,7 @@ function TourOrderForm() {
 
   const navigate = useNavigate();
   const orderTour = () => {
+    const formatedDate = formatDate(formData.start_week)
     fetch('http://localhost:8080/ordered-tours', {
       method: 'POST',
       headers: {
@@ -21,7 +26,7 @@ function TourOrderForm() {
       body: JSON.stringify({
         tour_id: tour_id,
         client_id: user,
-        start_week: formData.start_week,
+        start_week: formatedDate,
         number_of_people: formData.number_of_people
       }) // Предположим, что вам нужно передать идентификатор тура
     })

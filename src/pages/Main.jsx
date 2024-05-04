@@ -77,8 +77,8 @@ export default function Main() {
         </div>
         <ul className="flex flex-col gap-4">{clientTours.map((tour) =>
         {
-          console.log(tours, refunds)
           return refunds.some((el) => el.ordered_tour_id === tour.ordered_tour_id) ? null : <OrderedTourCard tour={tour}/>
+          //return <OrderedTourCard tour={tour}/>
         })}
         </ul>
       </main>

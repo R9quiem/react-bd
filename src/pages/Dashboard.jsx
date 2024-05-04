@@ -51,25 +51,46 @@ const Dashboard = () => {
             <thead>
             <tr>
               <th>Авиакомпания</th>
+
+              <th>Все</th>
+
+              <th>Потери</th>
               <th>Доход (в руб.)</th>
             </tr>
             </thead>
             <tbody>
             {aviaReport.map((airline, index) => (
-              <tr key={index}>
-                <td className="font-bold">{airline.name}</td>
-                <td className="font-bold">{airline.airline_profit}</td>
-              </tr>
+                <tr key={index}>
+                  <td className="font-bold">{airline.name}</td>
+                  <td className="font-bold">{airline.all}</td>
+                  <td className="font-bold">{airline.losses}</td>
+                  <td className="font-bold">{airline.airline_profit}</td>
+
+                </tr>
             ))}
             </tbody>
           </table>
         </div>
       )}
       {tourOperatorReport && (
-        <div>
-          <h3>Отчет для туроператора</h3>
-          <p className="font-bold">Доход: {tourOperatorReport[0].tour_operator_profit}</p>
-        </div>
+          <div>
+            <h3>Отчет для туроператора</h3>
+            <table>
+              <thead>
+              <tr>
+                <th>Все</th>
+                <th>Потери</th>
+                <th>Доход (в руб.)</th>
+              </tr>
+              </thead>
+              <tbody>
+              <td>{tourOperatorReport[0].all}</td>
+              <td>{tourOperatorReport[0].losses}</td>
+              <td>{tourOperatorReport[0].touroperator_profit}</td>
+              </tbody>
+            </table>
+
+          </div>
       )}
     </div>
   );
